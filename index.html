@@ -1,0 +1,59 @@
+---
+layout:  default
+title:  AlphaThink团队
+---
+{% for post in paginator.posts %}
+<div class="post" >
+                    <div class="entry-title">
+                        <h2>
+                        <a href="{{ site:url  }}{{ post.url  }}" title="{{post.title}}">{{post.title}}</a></h2>
+                    </div>
+                    <div class="postdata ">
+                        <div class="left">
+                           AlphaThink<span class="published posted_date">
+                                团队发布于[{{ post.date | date:"%Y-%m-%d"  }}]</span>
+                            <br />
+                      
+                        </div>
+                        <div class="right">
+                           <a href="{{ site:url  }}{{ post.url  }}" title="查看">查看</a> | <a href="{{ site:url  }}{{ post.url  }}" title="评论">评论</a>
+                        </div>
+                    </div>
+                    <div class="entry-content ">
+                        <p>
+                           {{ post.description }}...... <a href="{{ site:url  }}{{ post.url  }}">更多</a> </p>
+                    </div>
+</div>
+{% endfor %}
+<div class="paginator">
+  {% if paginator.previous_page %}
+    {% if paginator.previous_page == 1 %}
+    <a href="/"><前页</a>
+    {% else %}
+    <a href="/page{{paginator.previous_page}}"><前页</a>
+    {% endif %}
+  {% else %}
+    <span class="previous disabled"><前页</span>
+  {% endif %}
+
+      {% if paginator.page == 1 %}
+      <span class="current-page">1</span>
+      {% else %}
+      <a href="/">1</a>
+      {% endif %}
+
+    {% for count in (2..paginator.total_pages) %}
+      {% if count == paginator.page %}
+      <span class="current-page">{{count}}</span>
+      {% else %}
+      <a href="/page{{count}}">{{count}}</a>
+      {% endif %}
+    {% endfor %}
+
+  {% if paginator.next_page %}
+    <a class="next" href="/page{{paginator.next_page}}">后页></a>
+  {% else %}
+    <span class="next disabled" >后页></span>
+  {% endif %}
+  (共{{ paginator.total_posts }}篇)
+</div>

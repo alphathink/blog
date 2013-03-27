@@ -1,0 +1,19 @@
+---
+layout:  default
+---
+<div id=lie>
+{% for cat in site.categories %}
+<a href="categories.html#{{ cat[0] }}-ref" title="{{ cat[0] }}" rel="{{ cat[1].size }}"><span>{{ cat[0] }} ({{ cat[1].size }})</span></a>
+{% endfor %}
+</div>
+
+{% for cat in site.categories %}
+  <ul class="leibie rounded-list"> <h4 id="{{ cat[0] }}-ref">{{ cat[0] }}</h4>
+{% for post in cat[1] %}
+  <li>
+   <span >{{ post.date | date:"%Y-%m-%d" }}</span><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+  </li>
+{% endfor %}
+  </ul>
+{% endfor %}
+

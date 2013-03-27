@@ -1,0 +1,4 @@
+baseurl: /
+url: http://alphathink.org
+pygments: true
+paginate: 5
